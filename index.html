@@ -157,14 +157,25 @@ html{scroll-padding-top:72px}
 #appsd a:focus-visible,#appsd .ac:focus-visible,#bapps:focus-visible{outline:3px solid var(--a-ac);outline-offset:2px}
 @media (forced-colors:active){#appsd,#appsd .al a,#appsd .ac{border-color:CanvasText}}
 @media (max-width:380px){header{flex-wrap:wrap}.hr{margin-left:auto}}
+/* v11l · Cabecera igual que en Trámites (mismos iconos, tamaños y reparto), con los colores de Imagine. Fila 1: flecha (si vienes de otra app) + título + menú; fila 2: Voz, Perfil, Ajustes y Apps repartidos a todo el ancho. En ≥40rem, todo en una fila. No es fija. */
+header{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:.4rem .5rem;padding:.4rem 0}
+header .logo{order:0;flex:1 1 0;min-width:0;white-space:normal;font-size:1.3rem;line-height:1.15;letter-spacing:.01em;overflow-wrap:anywhere}
+#bback{order:-1;flex:none}
+header .brk{flex:0 0 100%;height:0;margin:0;order:1}
+header .burger{order:0;flex:none;width:56px;height:56px;border-radius:.6rem}
+header .bcfg{min-height:56px;min-width:56px;padding:.1rem .5rem;border-radius:.6rem;gap:.15rem}
+header .bcfg .bi{display:flex;align-items:center;justify-content:center;height:26px;line-height:0}header .bcfg .bi svg{display:block}
+header .bcfg .bl{font-size:.7rem;font-weight:700;white-space:nowrap}
+header .bcfg:not(#bback){order:2;flex:1 1 4.2rem;min-width:4.2rem;margin:0}
+#bback[hidden],#bvoz[hidden]{display:none}
+@media (min-width:40rem){header .brk{display:none}header .bcfg:not(#bback){flex:none;min-width:5.2rem}}
 </style>
 </head>
 <body>
 <noscript><p style="padding:20px;font:1rem system-ui,sans-serif">Esta página necesita JavaScript. · This page needs JavaScript. · 此页面需要启用 JavaScript。</p></noscript>
 <a class="skip" href="#entrada" id="skip"></a>
 <div class="w">
-<header><div class="logo">IMAGINE FOR <b>GOOD</b></div>
-<div class="hr"><a id="bperf" class="bcfg" href="https://argira.eus/ideakey/?from=imagine"><span class="bi" aria-hidden="true">👤</span><span class="bl" aria-hidden="true"></span></a><button type="button" id="bajus" class="bcfg" aria-haspopup="dialog"><span class="bi" aria-hidden="true">⚙</span><span class="bl" aria-hidden="true"></span></button><button id="bapps" type="button" class="bcfg" aria-haspopup="dialog" aria-label="Apps"><span class="bi" aria-hidden="true">▦</span><span class="bl" aria-hidden="true">Apps</span></button><button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Menú"><i></i><i></i><i></i></button></div>
+<header><a id="bback" class="bcfg" href="https://argira.eus/ideakey/?from=imagine" hidden><span class="bi" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span><span class="bl" aria-hidden="true">IDEAKEY</span></a><div class="logo">IMAGINE FOR <b>GOOD</b></div><button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Menú"><i></i><i></i><i></i></button><span class="brk" aria-hidden="true"></span><button type="button" id="bvoz" class="bcfg"><span class="bi" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg></span><span class="bl" aria-hidden="true">Voz</span></button><a id="bperf" class="bcfg" href="https://argira.eus/ideakey/?from=imagine"><span class="bi" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span><span class="bl" aria-hidden="true"></span></a><button type="button" id="bajus" class="bcfg" aria-haspopup="dialog"><span class="bi" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg></span><span class="bl" aria-hidden="true"></span></button><button id="bapps" type="button" class="bcfg" aria-haspopup="dialog" aria-label="Apps"><span class="bi" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span class="bl" aria-hidden="true">Apps</span></button>
 <nav id="menu" hidden aria-label="Menú"><a href="#entrada" data-m="0"></a><a href="#track" data-m="4" hidden></a><a class="sec" href="#make" data-m="6"></a><a class="sec" href="#lib" data-m="7"></a><a class="sec" href="#local-contribution" data-m="1"></a><a class="sec" href="#weekq" data-m="8"></a><a class="sec" href="#galsec" data-m="2"></a><a class="sec" href="#imgmaker" data-m="3"></a><a href="#hero-more" data-m="11"></a></nav></header>
 <dialog id="appsd" aria-labelledby="appsd-h"><h2 id="appsd-h" tabindex="-1">Apps</h2><div class="al"><a href="https://argira.eus/ideakey/?from=imagine">IDEAKEY</a><a href="https://argira.eus/tramites/?from=imagine">Trámites</a><a href="https://argira.eus/imagineforgood/" aria-current="page">IMAGINE</a></div><button type="button" class="ac" id="appsd-c">Cerrar</button></dialog>
 <dialog id="ajd" aria-labelledby="ajd-h"><h2 id="ajd-h" tabindex="-1"></h2><p class="mu" id="ajd-l"></p><div class="lang" id="ajd-lang" role="group" aria-label="Idioma / Language / 语言"><button data-l="es">ES</button> <button data-l="en">EN</button> <button data-l="zh">中文</button></div><p class="mu" id="ajd-n"></p><div class="row"><button type="button" class="ghost" id="ajc"></button></div></dialog>
@@ -699,7 +710,7 @@ const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;',
 const MENU={es:['Empezar: de lo oído a una pregunta','Aportación local','Campaña de imágenes','Crear imagen','Explorar desafíos','Generador de propuestas','Crear una propuesta','Biblioteca','Pregunta de la semana','Menú','Cerrar menú'],en:['Start: from what you heard to a question','Local contribution','Image campaign','Create image','Explore challenges','Proposal generator','Create a proposal','Library','Question of the week','Menu','Close menu'],zh:['开始：把听到的变成可核实的问题','本地经验','图像活动','创建图像','探索挑战','提案生成器','创建提案','提案库','本周问题','菜单','关闭菜单']};
 function menuText(){const m=MENU[L]||MENU.es,b=document.getElementById('burger');document.querySelectorAll('#menu a').forEach(a=>{{if(a.dataset.m!=='11')a.textContent=m[a.dataset.m]}});b.setAttribute('aria-label',b.getAttribute('aria-expanded')==='true'?m[10]:m[9]);document.getElementById('menu').setAttribute('aria-label',m[9])}
 function menuSet(o){const b=document.getElementById('burger');b.setAttribute('aria-expanded',o);document.getElementById('menu').hidden=!o;menuText()}
-document.getElementById('burger').addEventListener('click',()=>menuSet(document.getElementById('burger').getAttribute('aria-expanded')!=='true'));
+document.getElementById('burger').addEventListener('click',()=>{const o=document.getElementById('burger').getAttribute('aria-expanded')!=='true';menuSet(o);if(o)scrollTo(0,0)});
 document.getElementById('menu').addEventListener('click',e=>{const a=e.target.closest('a');if(a){menuSet(false);const h=a.getAttribute('href');if(h&&h[0]==='#'){const t=document.querySelector(h);const d=t&&t.closest&&(t.matches('details')?t:t.closest('details'));if(d&&!d.open)d.open=true;if(t&&h==='#hero-more'){setTimeout(()=>t.scrollIntoView(),0)}}}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!document.getElementById('menu').hidden){menuSet(false);document.getElementById('burger').focus()}});
 document.addEventListener('click',e=>{if(!document.getElementById('menu').hidden&&!e.target.closest('header'))menuSet(false)});
@@ -1564,7 +1575,7 @@ st.textContent='html.osc{--bg:#0f1713;--card:#17221c;--tx:#e8f0ea;--mu:#9bb0a3;-
 document.head.appendChild(st);
 function rd(k){try{return JSON.parse(localStorage.getItem(k))||{}}catch(e){return{}}}
 var V='ajustes',AJ=rd('ik-aj'),PS=rd('ik-perf'),R=document.documentElement,d=document.getElementById('ajd'),b=document.getElementById('bajus'),pf=document.getElementById('bperf');
-function sv(){try{localStorage.setItem('ik-aj',JSON.stringify(AJ));localStorage.setItem('ik-perf',JSON.stringify(PS))}catch(e){}}
+window.__ikAJ=AJ;function sv(){try{localStorage.setItem('ik-aj',JSON.stringify(AJ));localStorage.setItem('ik-perf',JSON.stringify(PS))}catch(e){}}
 function ap(){if(!(Number.isInteger(AJ.z)&&AJ.z>=0&&AJ.z<=4))AJ.z=AJ.tg?2:0;R.style.fontSize=ZP[AJ.z]+'%';['tg','ca','osc','gr','fz','pas','bar'].forEach(function(k){R.classList.toggle(k,!!AJ[k])});sv()}
 function K(){var l=(R.lang||'es').toLowerCase();return l.indexOf('zh')===0?'zh':l.indexOf('en')===0?'en':'es'}
 function say(m){var a=document.getElementById('ajd-say');if(a){a.textContent='';setTimeout(function(){a.textContent=m},50)}}
@@ -1609,6 +1620,29 @@ b.addEventListener('click',function(){if(d.showModal)d.showModal();else d.setAtt
 C.addEventListener('click',cerrar);
 d.addEventListener('click',function(e){if(e.target===d){var r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)cerrar()}});
 var me=d.querySelector('a[aria-current]');if(me)me.addEventListener('click',function(e){e.preventDefault();cerrar()})})();
+</script>
+<script>
+/* v11j · Botón Voz (lectura al tocar) y flecha de vuelta. Comparte el ajuste «vz» con IDEAKEY (ik-aj): 1 = lee al tocar, 2 = apagada, 0 = sin elegir. No habla sola; la voz la pone el dispositivo. */
+(function(){
+ var R=document.documentElement,b=document.getElementById('bvoz'),ok='speechSynthesis' in window&&typeof SpeechSynthesisUtterance!=='undefined';
+ function K(){var l=(R.lang||'es').toLowerCase();return l.indexOf('zh')===0?'zh':l.indexOf('en')===0?'en':'es'}
+ var T={es:{l:'Voz',1:'Voz al tocar activada. Pulsa para apagarla.',0:'Voz apagada. Pulsa para activar la lectura al tocar.',2:'Voz apagada. Pulsa para activar la lectura al tocar.',c:'es-ES'},en:{l:'Voice',1:'Read aloud on tap is on. Press to turn it off.',0:'Read aloud is off. Press to read aloud on tap.',2:'Read aloud is off. Press to read aloud on tap.',c:'en-US'},zh:{l:'语音',1:'点按朗读已开启。按此关闭。',0:'朗读已关闭。按此开启点按朗读。',2:'朗读已关闭。按此开启点按朗读。',c:'zh-CN'}};
+ var ICON_ON='<svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>',ICON_OFF='<svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg>';
+ function AJ(){if(window.__ikAJ)return window.__ikAJ;try{return JSON.parse(localStorage.getItem('ik-aj'))||{}}catch(e){return{}}}
+ function modo(){var v=AJ().vz;return ok&&v===1?1:2}
+ function guarda(v){var a=AJ();a.vz=v;try{localStorage.setItem('ik-aj',JSON.stringify(a))}catch(e){}}
+ function say(m){var a=document.getElementById('anuncio');if(!a){a=document.createElement('p');a.id='anuncio';a.className='vh';a.setAttribute('role','status');a.setAttribute('aria-live','polite');document.body.appendChild(a)}a.textContent='';setTimeout(function(){a.textContent=m},60)}
+ function pinta(){var m=modo(),t=T[K()];b.querySelector('.bi').innerHTML=m===1?ICON_ON:ICON_OFF;b.querySelector('.bl').textContent=t.l;b.setAttribute('aria-label',t[m]);b.setAttribute('aria-pressed',m===1?'true':'false')}
+ function para(){try{speechSynthesis.cancel()}catch(e){}}
+ function lee(txt){txt=String(txt||'').replace(/[✓▲▼◀▶■🔊←☰]/g,' ').replace(/\s+/g,' ').trim().slice(0,600);if(!txt)return;para();try{var u=new SpeechSynthesisUtterance(txt),c=T[K()].c;u.lang=c;u.rate=.95;var v=speechSynthesis.getVoices().filter(function(x){return x.lang&&x.lang.toLowerCase().indexOf(c.slice(0,2))===0})[0];if(v){u.voice=v;u.lang=v.lang}speechSynthesis.speak(u)}catch(e){}}
+ var bo=document.getElementById('bback');
+ try{var f=new URLSearchParams(location.search).get('from');if(f==='ideakey'||f==='tramites'){bo.hidden=false;bo.querySelector('.bl').textContent=f==='ideakey'?'IDEAKEY':'Trámites';bo.href=f==='ideakey'?'https://argira.eus/ideakey/?from=imagine':'https://argira.eus/tramites/?from=imagine';bo.setAttribute('aria-label',(K()==='en'?'Back to ':K()==='zh'?'返回 ':'Volver a ')+bo.querySelector('.bl').textContent)}}catch(e){}
+ if(!b)return;b.hidden=false;pinta();
+ b.addEventListener('click',function(e){e.stopImmediatePropagation();if(!ok){say(K()==='en'?'Your device has no voice available.':K()==='zh'?'你的设备没有可用的语音。':'Tu dispositivo no tiene voz disponible.');return}var n=modo()===1?2:1;guarda(n);if(n!==1)para();pinta();say(T[K()][n])});
+ document.addEventListener('click',function(e){if(modo()!==1||!e.target.closest||e.target.closest('#bvoz'))return;var t=e.target.closest('h1,h2,h3,label,button,a,summary,li,p');if(t)lee(t.textContent||t.getAttribute('aria-label'))},true);
+ document.addEventListener('visibilitychange',function(){if(document.hidden)para()});addEventListener('pagehide',para);
+ new MutationObserver(pinta).observe(R,{attributes:true,attributeFilter:['lang']});
+})();
 </script>
 </body>
 </html>
